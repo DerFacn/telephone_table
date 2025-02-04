@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from app.config import Config
 from flask_basicauth import BasicAuth
 
@@ -13,9 +13,8 @@ def create_app(config_obj=Config) -> Flask:
 
 
     @app.route('/')
-    @basic_auth.required
     def index():
-        return {"message": "Hello world"}
+        return render_template('index.html')
 
 
     return app

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <title>Telefone Table page</title>
+    <style>
+        body {
+            font-family: 'Inter', serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .form {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input {
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <form class="form">
+        <div class="form-group">
+            <div class="form-group">
+                <input type="checkbox" id="checkbox-1">
+                <label for="checkbox-1">Heide</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="checkbox-2">
+                <label for="checkbox-2">Meldorf</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="Search by columns...">
+            <button type="button">Search</button>
+        </div>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name/Bezeichnung</th>
+                <th>Nummer</th>
+                <th>Funktion</th>
+                <th>Gebäude</th>
+                <th>Raumnummer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>EDV</td>
+                <td>511</td>
+                <td>IT-Abteilung</td>
+                <td>Hauptgebäude</td>
+                <td>10001</td>
+            </tr>
+            <tr>
+                <td>EDV</td>
+                <td>511</td>
+                <td>IT-Abteilung</td>
+                <td>Hauptgebäude</td>
+                <td>10001</td>
+            </tr>
+            <tr>
+                <td>EDV</td>
+                <td>511</td>
+                <td>IT-Abteilung</td>
+                <td>Hauptgebäude</td>
+                <td>10001</td>
+            </tr>
+            <tr>
+                <td>EDV</td>
+                <td>511</td>
+                <td>IT-Abteilung</td>
+                <td>Hauptgebäude</td>
+                <td>10001</td>
+            </tr>
+            <tr>
+                <td>EDV</td>
+                <td>511</td>
+                <td>IT-Abteilung</td>
+                <td>Hauptgebäude</td>
+                <td>10001</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
