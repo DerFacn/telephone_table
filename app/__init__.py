@@ -13,14 +13,12 @@ def create_app(config_obj=Config) -> Flask:
 
     basic_auth.init_app(app)
     db.init_app(app)
-
-
-    @app.route('/')
-    def index():
-        return render_template('index.html')
     
     from app.cli import data
     from app import models
+    from app.routes import index
+
+    app.add_url_rule('/', 'index', index, methods=['GET'])
 
     app.cli.add_command(data)
 

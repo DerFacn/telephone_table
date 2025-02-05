@@ -2,78 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://www.bbz-dithmarschen.de/fileadmin/images/favicon.ico">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <title>Telefone Table page</title>
-    <style>
-        body {
-            font-family: 'Inter', serif;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 10px 0;
-            font-size: 18px;
-            text-align: left;
-        }
-
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .form {
-            display: flex;
-            width: 100%;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            gap: 10px;
-        }
-
-        input {
-            padding: 5px;
-        }
-
-        button {
-            padding: 5px 10px;
-        }
-    </style>
+    <title>BBZ-Dithmarschen Telefone Tabelle</title>
 </head>
 <body>
-    <form class="form">
-        <div class="form-group">
+    <div class="header">
+        <form class="form">
             <div class="form-group">
-                <input type="checkbox" id="checkbox-1">
-                <label for="checkbox-1">Heide</label>
+                <div class="form-group">
+                    <input class="checkbox" type="checkbox" id="checkbox-1" data-filter="Heide" onchange="changeDisplay()" checked>
+                    <label for="checkbox-1">Heide</label>
+                </div>
+                <div class="form-group">
+                    <input class="checkbox" type="checkbox" id="checkbox-2" data-filter="Meldorf" onchange="changeDisplay()" checked>
+                    <label for="checkbox-2">Meldorf</label>
+                </div>
             </div>
             <div class="form-group">
-                <input type="checkbox" id="checkbox-2">
-                <label for="checkbox-2">Meldorf</label>
+                <input type="text" placeholder="Suchen..." onkeyup="search(this)">
             </div>
-        </div>
-        <div class="form-group">
-            <input type="text" placeholder="Search by columns...">
-            <button type="button">Search</button>
-        </div>
-    </form>
-
-    <table>
+        </form>  
+    </div>
+    <table id="table">
         <thead>
             <tr>
                 <th>Name/Bezeichnung</th>
@@ -84,42 +41,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>EDV</td>
-                <td>511</td>
-                <td>IT-Abteilung</td>
-                <td>Hauptgebäude</td>
-                <td>10001</td>
+            {% for entry in entries %}
+            <tr class="entry" data-filter="{{ entry.city }}">
+                <td>{{ entry.name }}</td>
+                <td>{{ entry.nummer }}</td>
+                <td>{{ entry.funktion }}</td>
+                <td>{{ entry.gebaeude }}</td>
+                <td>{{ entry.raumnummer }}</td>
             </tr>
-            <tr>
-                <td>EDV</td>
-                <td>511</td>
-                <td>IT-Abteilung</td>
-                <td>Hauptgebäude</td>
-                <td>10001</td>
-            </tr>
-            <tr>
-                <td>EDV</td>
-                <td>511</td>
-                <td>IT-Abteilung</td>
-                <td>Hauptgebäude</td>
-                <td>10001</td>
-            </tr>
-            <tr>
-                <td>EDV</td>
-                <td>511</td>
-                <td>IT-Abteilung</td>
-                <td>Hauptgebäude</td>
-                <td>10001</td>
-            </tr>
-            <tr>
-                <td>EDV</td>
-                <td>511</td>
-                <td>IT-Abteilung</td>
-                <td>Hauptgebäude</td>
-                <td>10001</td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>
+<script src="{{ url_for('static', filename='filtering.js') }}"></script>
+<script src="{{ url_for('static', filename='header.js') }}"></script>
 </html>
