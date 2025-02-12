@@ -40,6 +40,7 @@ function search(input) {
         allEntries.forEach(entry => {
             entry.classList.remove('bySearch-hidden')
         })
+        return
     }
 
     allEntries.forEach(entry => {

@@ -1,7 +1,7 @@
 import click
 import pandas
 from app import db
-from app.models import Entrie, City
+from app.models import Entrie, Building, City
 from app.utils import get_all, get_first
 
 
@@ -12,12 +12,18 @@ def data():
 
 @data.command('erase-all', help='Clean entries table')
 def erase_all():
-    results = get_all(
+    entries_results = get_all(
         Entrie.select()
     )
+    buildings_results = get_all(
+        Building.select()
+    )
 
-    for entry in results:
+    for entry in entries_results:
         db.session.delete(entry)
+
+    for building in buildings_results:
+        db.session.delete(building)
 
     db.session.commit()
 
@@ -55,12 +61,27 @@ def import_from_excel():
 
     values = df[columns.values()].values
 
+    # Parsing data
     for row in values.tolist():
         item = dict(zip(columns.keys(), row))
 
         new_entrie = Entrie(city_id=city.id)
 
         for column, value in item.items():
+            if column == 'gebaeude':
+                if type(value) != float:
+                    building = get_first(
+                        Building.select().filter_by(name=value.strip())
+                    )    
+
+                    if not building:
+                        building = Building(name=value.strip())
+                        db.session.add(building)
+                        db.session.flush()
+
+                    setattr(new_entrie, 'gebaeude_id', building.id)
+                continue
+
             setattr(new_entrie, column, value)
 
         db.session.add(new_entrie)
