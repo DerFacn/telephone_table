@@ -1,0 +1,48 @@
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql_db
+    environment:
+      - POSTGRES_USER=nikita
+      - POSTGRES_PASSWORD=ChangeMeLater
+      - POSTGRES_DB=telephone_table
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  app:
+    build:
+      context: ../
+      dockerfile: tools/Dockerfile
+    container_name: telephone_table
+    expose:
+      - "8080"
+    networks:
+      - app_network
+    environment:
+      - SECRET_KEY=ChangeMeLater
+      - DATABASE_URL=postgresql://nikita:ChangeMeLater@postgresql:5432/telephone_table
+      - BASIC_AUTH_USERNAME=derfacn
+      - BASIC_AUTH_PASSWORD=12345
+    depends_on:
+      - postgresql
+    
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app_network
+    
+
+volumes:
+  pg_data:
+
+
+networks:
+  app_network:
+    driver: bridge

@@ -1,8 +1,8 @@
 import pandas
-from app import db
+from app import db, basic_auth
 from app.models import Entrie, City, Building
 from app.utils import get_all, get_first
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, make_response
 
 
 def index():
@@ -22,6 +22,7 @@ def index():
     return render_template('index.html', entries=entries)
 
 
+@basic_auth.required
 def import_excel():
     file = request.files.get('excel')
     city_name = request.form.get('city')
@@ -79,6 +80,13 @@ def import_excel():
                     setattr(new_entrie, 'gebaeude_id', building.id)
                 continue
 
+            # Handle NaN or missing values, ensure the value is a string
+            if value is None or (isinstance(value, float) and pandas.isna(value)):
+                value = ""  # Default to an empty string if NaN or None
+            
+            # Ensure the value is treated as a string
+            value = str(value).strip()
+
             setattr(new_entrie, column, value)
 
         db.session.add(new_entrie)
@@ -88,3 +96,4 @@ def import_excel():
     flash('Table successfully imported!', 'success')
 
     return redirect(url_for('admin.index'))
+

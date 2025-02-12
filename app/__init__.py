@@ -7,7 +7,7 @@ from flask_babel import Babel
 from flask_admin import Admin
 
 basic_auth = BasicAuth()
-db = Alchemical()
+db = Alchemical(session_options={'autoflush': False})
 babel = Babel()
 
 

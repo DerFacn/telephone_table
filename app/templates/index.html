@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="https://www.bbz-dithmarschen.de/fileadmin/images/favicon.ico">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, target-densitydpi=device-dpi">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +45,15 @@
             {% for entry in entries %}
             <tr class="entry" data-filter="{{ entry.city }}">
                 <td>{{ entry.name }}</td>
-                <td>{{ entry.nummer }}</td>
+                <td>
+                    <span 
+                        onclick="
+                            navigator.clipboard.writeText(this.innerText);
+                            alert('Copied the text: ' + this.innerText);" 
+                        onMouseOver="this.style.color='#565656'" 
+                        onMouseOut="this.style.color='#000'"
+                        style="cursor: pointer; display: inline-block;" title="Click to copy">{{ entry.nummer }}</span>
+                </td>
                 <td>{{ entry.funktion }}</td>
                 <td>{{ entry.gebaeude }}</td>
                 <td>{{ entry.raumnummer }}</td>
