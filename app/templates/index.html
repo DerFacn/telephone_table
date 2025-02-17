@@ -6,14 +6,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, target-densitydpi=device-dpi">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
     <title>BBZ-Dithmarschen Telefone Tabelle</title>
 </head>
 <body>
+    {% include 'dialog.html' %}
     <div class="header">
+        <i class='info'></i>
         <form class="form">
             <div class="form-group">
                 <div class="form-group">
@@ -29,7 +27,7 @@
                 <input type="text" placeholder="Suchen..." onkeyup="search(this)">
             </div>
         </form>
-        <a href="{{ url_for('admin.index') }}">Edit</a>
+        <a href="{{ url_for('admin.index') }}">Bearbeiten</a>
     </div>
     <table id="table">
         <thead>
@@ -64,4 +62,5 @@
 </body>
 <script src="{{ url_for('static', filename='filtering.js') }}"></script>
 <script src="{{ url_for('static', filename='header.js') }}"></script>
+<script src="{{ url_for('static', filename='info.js') }}"></script>
 </html>

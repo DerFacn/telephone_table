@@ -1,8 +1,54 @@
+@font-face {
+    font-family: Inter;
+    src: url('Inter-VariableFont.ttf') format('truetype');
+}
+
 body {
-    font-family: 'Inter', serif;
+    font-family: Inter;
     margin: 0 10px 10px 10px;
     padding: 0;
 }
+
+/* DIALOG */
+
+::backdrop {
+    background-image: black;
+}
+
+dialog {
+    min-width: 40vw;
+    max-width: 40vw;
+    min-height: 50vh;
+    max-height: 85vh;
+}
+
+dialog h1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+dialog span.button {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+dialog .copyright {
+    width: 100%;
+    text-align: center;
+    color: rgb(101, 101, 101);
+}
+
+dialog .dialog {
+    width: 100%;
+    height: 100%;
+}
+
+/* TABLE */
 
 .header {
     z-index: 999;
@@ -18,6 +64,18 @@ body {
 .header a {
     position: relative;
     top: 5px;
+}
+
+.header i.info {
+    position: relative;
+    top: 5px;
+    right: 5px;
+    display: inline-block;
+    background: url('circle-question.svg') no-repeat top left;
+    background-position: 0 0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
 }
 
 table {
