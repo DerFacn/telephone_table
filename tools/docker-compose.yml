@@ -21,10 +21,10 @@ services:
     networks:
       - app_network
     environment:
-      - SECRET_KEY=ChangeMeLater
+      - SECRET_KEY=${SECRET_KEY}
       - DATABASE_URL=postgresql://nikita:ChangeMeLater@postgresql:5432/telephone_table
-      - BASIC_AUTH_USERNAME=derfacn
-      - BASIC_AUTH_PASSWORD=12345
+      - BASIC_AUTH_USERNAME=${BASIC_AUTH_USERNAME}
+      - BASIC_AUTH_PASSWORD=${BASIC_AUTH_PASSWORD}
     depends_on:
       - postgresql
     
