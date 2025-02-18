@@ -78,6 +78,18 @@ dialog .dialog {
     cursor: pointer;
 }
 
+.header i.printer {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    background: url('printer.svg') no-repeat top left;
+    background-position: 0 0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
 table {
     position: sticky;
     width: 100%;
