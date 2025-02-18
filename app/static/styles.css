@@ -141,3 +141,104 @@ button {
 .bySearch-hidden {
     display: none;
 }
+
+/* Загальні стилі для мобільних пристроїв */
+@media screen and (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 10px;
+    }
+
+    dialog {
+        min-width: 92vw;
+        max-width: 92vw;
+        min-height: 95vh;
+        max-height: 95vh;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .header a {
+        margin-top: 10px;
+    }
+
+    .form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    table {
+        width: 100%;
+        font-size: 14px;  /* Може бути меншим для мобільних */
+        display: block;
+        overflow-y: auto;
+    }
+
+    th, td {
+        padding: 8px;  /* Менші відступи на малих екранах */
+    }
+
+    th {
+        font-size: 16px;  /* Зменшення шрифта для заголовків */
+        position: sticky;
+        top: 0px;
+    }
+
+    .header i {
+        width: 20px;
+        height: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .form-group input, .form-group label {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    .hidden, .bySearch-hidden {
+        display: none;
+    }
+}
+
+/* Зовнішній вигляд для дуже маленьких екранів (менше 480px) */
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 5px;
+    }
+
+    table {
+        font-size: 12px;  /* Для дуже малих екранів */
+    }
+
+    th, td {
+        padding: 6px;  /* Зменшені відступи */
+    }
+
+    .header i {
+        width: 18px;
+        height: 18px;
+    }
+
+    .form-group {
+        gap: 5px;
+    }
+}
