@@ -116,18 +116,5 @@
         // Зберігаємо PDF
         doc.save('tabelle.pdf');
     }
-
-    // Функція для друку таблиці
-    function printTable() {
-        const table = document.getElementById("table");
-
-        // Використовуємо стандартну функцію друку браузера
-        const printWindow = window.open('', '', 'height=600,width=800');
-        printWindow.document.write('<html><head><title>Друк таблиці</title></head><body>');
-        printWindow.document.write(table.outerHTML);
-        printWindow.document.write('</body></html>');
-        printWindow.document.close();
-        printWindow.print();
-    }
 </script>
 </html>
