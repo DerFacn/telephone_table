@@ -14,6 +14,7 @@ def index():
         'city': entry.city.name if entry.city else '—',
         'name': entry.name if entry.name else '—',
         'nummer': entry.nummer if entry.nummer else '—',
+        'personal_nummer': entry.personal_nummer if entry.personal_nummer else '—',
         'funktion': entry.funktion if entry.funktion else '—',
         'gebaeude': entry.gebaeude.name if entry.gebaeude else '—',
         'raumnummer': entry.raumnummer if entry.raumnummer else '—'

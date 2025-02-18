@@ -23,7 +23,7 @@ def _copyable_number(view, context, model, name):
             alert('Copied the text: ' + this.innerText);" 
         onMouseOver="this.style.color='#565656'" 
         onMouseOut="this.style.color='#000'"
-        style="cursor: pointer; display: inline-block;" title="Click to copy">{ model.nummer }</p>
+        style="cursor: pointer; display: inline-block;" title="Click to copy">{ getattr(model, name) if getattr(model, name) else '' }</p>
         '''
     )
 
@@ -46,14 +46,15 @@ class BuildingsModelView(ProtectedModelView):
 
 class EntriesModelView(ProtectedModelView):
     page_size = 75
-    column_list = ('name', 'nummer', 'funktion', 'raumnummer', 'city', 'gebaeude')
-    column_searchable_list = ['name', 'nummer', 'funktion', 'raumnummer']
+    column_list = ('name', 'nummer', 'personal_nummer', 'funktion', 'raumnummer', 'city', 'gebaeude')
+    column_searchable_list = ['name', 'nummer', 'personal_nummer', 'funktion', 'raumnummer']
 
-    form_columns = ['name', 'nummer', 'funktion', 'raumnummer', 'city', 'gebaeude']
+    form_columns = ['name', 'nummer', 'personal_nummer', 'funktion', 'raumnummer', 'city', 'gebaeude']
 
     column_labels = {
         "name": "Name/Bezeichnung",
         "nummer": "Nummer",
+        "personal_nummer": "Personal Nummer",
         "funktion": "Funktion",
         "gebaeude": "Gebäude",
         "raumnummer": "Raumnummer"
@@ -61,6 +62,7 @@ class EntriesModelView(ProtectedModelView):
 
     column_formatters = {
         "nummer": _copyable_number,
+        "personal_nummer": _copyable_number,
         "city": _display_city,
         "gebaeude": _display_building
     }

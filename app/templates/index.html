@@ -37,6 +37,7 @@
             <tr>
                 <th>Name/Bezeichnung</th>
                 <th>Nummer</th>
+                <th>Personal Nummer</th>
                 <th>Funktion</th>
                 <th>Gebäude</th>
                 <th>Raumnummer</th>
@@ -54,6 +55,15 @@
                         onMouseOver="this.style.color='#565656'" 
                         onMouseOut="this.style.color='#000'"
                         style="cursor: pointer; display: inline-block;" title="Click to copy">{{ entry.nummer }}</span>
+                </td>
+                <td>
+                    <span 
+                        onclick="
+                            navigator.clipboard.writeText(this.innerText);
+                            alert('Copied the text: ' + this.innerText);" 
+                        onMouseOver="this.style.color='#565656'" 
+                        onMouseOut="this.style.color='#000'"
+                        style="cursor: pointer; display: inline-block;" title="Click to copy">{{ entry.personal_nummer }}</span>
                 </td>
                 <td>{{ entry.funktion }}</td>
                 <td>{{ entry.gebaeude }}</td>
@@ -80,7 +90,7 @@
         const newTable = document.createElement("table")
         const thead = document.createElement("thead")
         const headerRow = document.createElement("tr")
-        const headers = ['Name/Bezeichnung', 'Nummer', 'Funktion', 'Gebäude', 'Raumnummer']
+        const headers = ['Name/Bezeichnung', 'Nummer', 'Personal Nummer', 'Funktion', 'Gebäude', 'Raumnummer']
         headers.forEach(headerText => {
             const th = document.createElement("th")
             th.textContent = headerText

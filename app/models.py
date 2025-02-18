@@ -40,6 +40,7 @@ class Entrie(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(nullable=True)
     nummer: Mapped[str] = mapped_column(nullable=True)
+    personal_nummer: Mapped[str] = mapped_column(nullable=True)
     funktion: Mapped[str] = mapped_column(nullable=True)
     raumnummer: Mapped[str] = mapped_column(nullable=True)
 
