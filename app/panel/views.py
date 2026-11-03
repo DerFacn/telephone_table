@@ -15,17 +15,18 @@ def _display_building(view, context, model, name):
 
 
 def _copyable_number(view, context, model, name):
+    # Markup.format() escapes the value, an f-string inside Markup() would not
     return Markup(
-        f'''
+        '''
         <p 
         onclick="
             navigator.clipboard.writeText(this.innerText);
             alert('Copied the text: ' + this.innerText);" 
         onMouseOver="this.style.color='#565656'" 
         onMouseOut="this.style.color='#000'"
-        style="cursor: pointer; display: inline-block;" title="Click to copy">{ getattr(model, name) if getattr(model, name) else '' }</p>
+        style="cursor: pointer; display: inline-block;" title="Click to copy">{}</p>
         '''
-    )
+    ).format(getattr(model, name) or '')
 
 
 class CitiesModelView(ProtectedModelView):
